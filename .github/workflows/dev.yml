@@ -1,0 +1,26 @@
+name: LocalNewBusiness Frontend Deployment
+on:
+  push:
+    branches: 'dev'
+jobs:
+  push_event:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: toko-bifrost/ms-teams-deploy-card@master
+      if: always()
+      with:
+        github-token: ${{ github.token }}
+        webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        port: 22
+        username: ec2-user
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          echo "Deploy"
+          cd scripts
+          ./install-lnb-fe.sh || exit 1
+          ./deploy-lnb-fe.sh || exit 1
