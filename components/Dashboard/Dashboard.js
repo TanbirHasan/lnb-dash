@@ -21,8 +21,8 @@ import user from "../../public/assets/User.png";
 import notification from "../../public/assets/notification.png";
 import payment from "../../public/assets/dashpayment.jpeg";
 import setting from "../../public/assets/Setting.png";
-import helps from "../../public/assets/Helps.png";
-import exit from "../../public/assets/Exit.png";
+import helps from "../../public/assets/helps.png";
+import exit from "../../public/assets/exit.png";
 import Link from "next/link";
 import profile from "../../public/assets/profile.png";
 import {
